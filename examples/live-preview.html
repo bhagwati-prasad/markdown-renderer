@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Markdown Renderer Live Preview</title>
+  <link rel="stylesheet" href="../dist/themes.css">
+  <script type="module">
+    import { MarkdownRenderer } from '../dist/index.esm.js';
+    window.renderer = new MarkdownRenderer({ theme: 'light' });
+    window.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById('input');
+      const preview = document.getElementById('preview');
+      renderer.renderMarkdownLive(input, preview);
+    });
+  </script>
+</head>
+<body class="bg-gray-50 p-8">
+  <textarea id="input" rows="8" class="w-full border p-2 mb-4"># Live Preview
+
+Type Markdown _here_.
+
+```js
+console.log("Code highlighting!");

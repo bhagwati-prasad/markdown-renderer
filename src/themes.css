@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --mr-bg: theme(colors.white);
+    --mr-fg: theme(colors.gray.800);
+    --mr-link: theme(colors.blue.600);
+    --mr-code-bg: theme(colors.gray.100);
+    --mr-summary-bg: theme(colors.gray.50);
+    --mr-summary-fg: theme(colors.gray.900);
+  }
+  .dark {
+    --mr-bg: theme(colors.gray.900);
+    --mr-fg: theme(colors.gray.100);
+    --mr-link: theme(colors.blue.400);
+    --mr-code-bg: theme(colors.gray.800);
+    --mr-summary-bg: theme(colors.gray.700);
+    --mr-summary-fg: theme(colors.white);
+  }
+}
+
+.markdown-body {
+  @apply prose prose-neutral max-w-none bg-[var(--mr-bg)] text-[var(--mr-fg)] transition-colors duration-200;
+}
+
+.markdown-body a { @apply text-[var(--mr-link)] hover:underline; }
+.markdown-body code { @apply bg-[var(--mr-code-bg)] px-1 py-0.5 rounded; }
+.markdown-body pre code { @apply bg-transparent p-0 rounded-none; }
+.markdown-body pre { @apply bg-[var(--mr-code-bg)] p-4 rounded-lg overflow-x-auto relative; }
+.markdown-body details summary {
+  @apply cursor-pointer bg-[var(--mr-summary-bg)] text-[var(--mr-summary-fg)] px-2 py-1 rounded;
+}
+.markdown-body details[open] summary { @apply mb-2; }
+
+.copy-btn {
+  @apply absolute top-2 right-2 px-2 py-1 text-xs rounded bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-100 hover:bg-blue-400 hover:text-white transition-colors duration-150 z-10;
+}

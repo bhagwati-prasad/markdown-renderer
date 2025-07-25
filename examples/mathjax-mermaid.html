@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Markdown Renderer: MathJax and Mermaid</title>
+  <link rel="stylesheet" href="../dist/themes.css">
+  <script type="module">
+    import { MarkdownRenderer } from '../dist/index.esm.js';
+    window.addEventListener('DOMContentLoaded', async () => {
+      const md = `
+# MathJax and Mermaid
+
+Inline math: $E=mc^2$
+
+Block math:
+
+$$
+\\frac{a}{b} = c
+$$
+
+\`\`\`mermaid
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice->>Bob: Hello Bob, how are you?
+    Bob-->>Alice: I am good thanks!
+\`\`\`
+      `;
+      const renderer = new MarkdownRenderer({ theme: 'dark' });
+      await renderer.render(md, document.getElementById('preview'));
+    });
+  </script>
+</head>
+<body class="bg-gray-900 text-gray-100">
+  <div id="preview" class="markdown-body"></div>
+</body>
+</html>
